@@ -1,28 +1,19 @@
-from operacoes import( somar, subtrair, multiplicar, dividir, potenciacao, raiz_quadrada)
+from operacoes import( somar, subtrair, multiplicar, dividir, potenciacao, raiz_quadrada, porcentagem)
 
 from utils import ler_numero
 
 from historico import salvar_historico, carregar_historico
-
-def exibir_menu():
-    print("="*30)
-    print(" CALCULADORA INTELIGENTE ")
-    print("="*30)
-    print("1. Soma")
-    print("2. Subtração")
-    print("3. Multiplicação")
-    print("4. Divisão")
-    print("5. Potenciação")
-    print("6. Raiz Quadrada")
-    print("7. Ver Histórico")
-    print("8. Limpar Histórico")
-    print("0. Sair")
+from menu import exibir_menu
 
 def executar_operacao(funcao, simbolo, historico):
     numero1 = ler_numero("Digite o primeiro número: ")
     numero2 = ler_numero("Digite o segundo número: ")
 
     resultado = funcao(numero1, numero2)
+
+    if isinstance(resultado, str):
+        print(f"\n{resultado}\n")
+        return
 
     historico.append(f"{numero1} {simbolo} { numero2} = {resultado}")
 
@@ -35,11 +26,28 @@ def executar_operacoes_unarias(funcao, simbolo, historico):
 
     resultado = funcao(numero)
 
+    if isinstance(resultado, str):
+            print(f"\n{resultado}\n")
+            return
+
     historico.append(f"{simbolo}{numero} = {resultado}")
 
     salvar_historico(historico)
 
     print(f"\nO resultado da operação é: {resultado}\n")
+
+operacoes = {
+    "1": (somar, "+"),
+    "2": (subtrair, "-"),
+    "3": (multiplicar, "*"),
+    "4": (dividir, "/"),
+    "5": (potenciacao, "^"),
+    "9": (porcentagem, "%")
+}
+
+operacoes_unarias = {
+    "6": (raiz_quadrada, "√")
+}
 
 historico = carregar_historico()
 
@@ -52,24 +60,16 @@ while True:
         print("\nDesligando Calculadora...")
         break
 
-    elif opcao == "1":
-        executar_operacao(somar, "+", historico)
+    elif opcao in operacoes:
+        funcao, simbolo = operacoes[opcao]
 
-    elif opcao == "2":
-        executar_operacao(subtrair, "-", historico)
+        executar_operacao(funcao, simbolo, historico)
 
-    elif opcao == "3":
-        executar_operacao(multiplicar, "*", historico)
+    elif opcao in operacoes_unarias:
+        funcao, simbolo = operacoes_unarias[opcao]
 
-    elif opcao == "4":
-        executar_operacao(dividir, "/", historico)
-
-    elif opcao == "5":
-        executar_operacao(potenciacao, "^", historico)
-
-    elif opcao == "6":
-        executar_operacoes_unarias(raiz_quadrada, "√", historico)
-        
+        executar_operacoes_unarias(funcao, simbolo, historico)
+      
     elif opcao == "7":
 
         if not historico:

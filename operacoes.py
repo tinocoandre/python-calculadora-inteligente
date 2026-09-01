@@ -1,3 +1,4 @@
+from email.mime import base
 import math
 
 def somar(numero1, numero2):
@@ -50,14 +51,20 @@ def dividir(numero1, numero2):
     Returns:
         float: A divisão entre dois números
     """
+    if numero2 == 0:
+        return "Erro: divisão por zero não é permitida."
+    
     return numero1 / numero2
 
 def potenciacao(base, expoente):
-    if abs(expoente) > 100:
-        return "Erro: o expoente deve estar entre -100 e 100."
-
     try:
-        return base ** expoente
+        resultado = base ** expoente
+
+        if abs(resultado) > 1e308:
+            return "Erro: resultado muito grande."
+
+        return resultado
+
     except OverflowError:
         return "Erro: resultado muito grande."
 
@@ -76,3 +83,16 @@ def raiz_quadrada(numero):
         return "Erro: não existe raiz real de número negativo"
 
     return math.sqrt(numero)
+
+def porcentagem(numero1, numero2):
+    """
+    Calcula a porcentagem de um número.
+
+    Args:
+        numero (float): Número informado pelo usuário.
+        percentual (float): Percentual informado pelo usuário.
+
+    Returns:
+        float: Porcentagem do número.
+    """
+    return (numero1 * numero2) / 100

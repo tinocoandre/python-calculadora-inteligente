@@ -1,0 +1,13 @@
+def exibir_menu():
+    print("="*30)
+    print(" CALCULADORA INTELIGENTE ")
+    print("="*30)
+    print("1. Soma")
+    print("2. Subtração")
+    print("3. Multiplicação")
+    print("4. Divisão")
+    print("5. Potenciação")
+    print("6. Raiz Quadrada")
+    print("9. Porcentagem")
+    print("7. Histórico de Operações")
+    print("8. Apagar Histórico")
