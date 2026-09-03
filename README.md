@@ -54,7 +54,7 @@ python main.py
 
 ## Melhorias futuras
 
-- Histórico de operações
+- Histórico de operações [Feito]
 - Interface gráfica (Tkinter)
-- Testes automatizados
+- Testes automatizados [Feito]
 - Interface Web

@@ -1,4 +1,3 @@
-from email.mime import base
 import math
 
 def somar(numero1, numero2):
@@ -41,20 +40,11 @@ def multiplicar(numero1, numero2):
     return numero1 * numero2
 
 def dividir(numero1, numero2):
-    """
-    Função para dividir dois numeros
-
-    Args:
-        numero1 (float): O primeiro número
-        numero2 (float): O segundo número
-
-    Returns:
-        float: A divisão entre dois números
-    """
     if numero2 == 0:
-        return "Erro: divisão por zero não é permitida."
-    
+        return "Erro: Divisão por zero não é permitida."
+
     return numero1 / numero2
+    
 
 def potenciacao(base, expoente):
     try:
@@ -69,18 +59,8 @@ def potenciacao(base, expoente):
         return "Erro: resultado muito grande."
 
 def raiz_quadrada(numero):
-
-    """
-    Calcula a raiz quadrada de um número.
-
-    Args:
-        numero (float): Número informado pelo usuário.
-
-    Returns:
-        float | str: Raiz quadrada do número ou mensagem de erro.
-    """
     if numero < 0:
-        return "Erro: não existe raiz real de número negativo"
+        return "Erro: Não é possível calcular a raiz quadrada de um número negativo."
 
     return math.sqrt(numero)
 

@@ -42,7 +42,7 @@ operacoes = {
     "3": (multiplicar, "*"),
     "4": (dividir, "/"),
     "5": (potenciacao, "^"),
-    "9": (porcentagem, "%")
+    "7": (porcentagem, "%")
 }
 
 operacoes_unarias = {
@@ -70,7 +70,7 @@ while True:
 
         executar_operacoes_unarias(funcao, simbolo, historico)
       
-    elif opcao == "7":
+    elif opcao == "8":
 
         if not historico:
             print("\nNenhuma operação foi realizada.\n")
@@ -81,7 +81,7 @@ while True:
             for indice, operacao in enumerate(historico, start=1):
                 print(f"{indice}. {operacao}")
 
-    elif opcao =="8":
+    elif opcao =="9":
 
         historico.clear()
 
